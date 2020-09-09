@@ -2,7 +2,7 @@
 
 #### Data Report Generator is a script for generating data overview reports for tabular datasets
 
-##### *Currently supports .xlsx .csv .parquet files*
+##### *Currently supports `.xlsx` `.csv` `.parquet` files*
 
 
 #### Output file
