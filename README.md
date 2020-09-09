@@ -26,7 +26,6 @@
 ```
 
 ## Installation
-1. Ensure `>= python3.6` is installed
 1. `pip install -r requirements.txt`
 1. Add `alias generate_report="python3 path_to_generator.py generate"` to `.bashrc` and source it *(optional)*
 
