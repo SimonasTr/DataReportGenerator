@@ -4,7 +4,7 @@ Data Report Generator is a script for generating data overview reports for tabul
 
 Currently supports .xlsx .csv .parquet files.
 
-Output file:
+Output file
 - Shape
 - Columns
     * __description__ requires manual input
