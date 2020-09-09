@@ -19,4 +19,20 @@
 * *10 Random rows for every column containing missing values in that column*
 
 ### Requirements
-------------
+
+
+
+### Installation
+
+
+### Usage
+If alias is not set:
+
+'''bash
+python3 generator.py generate --path=path_to_file
+'''
+
+If alias is set:
+'''bash
+generate_report --path=path_to_file
+'''

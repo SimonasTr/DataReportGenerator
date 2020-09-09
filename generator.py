@@ -16,7 +16,7 @@ class DataReportGenerator:
         elif ftype == 'xlsx':
             df = pd.read_excel(path)
         elif ftype == 'parquet':
-            df = pd.read_parquet(fname)
+            df = pd.read_parquet(path)
         else:
             raise Exception(f"File type '{ftype}' is not supported.")
 
