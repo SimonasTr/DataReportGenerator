@@ -4,17 +4,17 @@ import os
 import pandas as pd
 
 class DataReportGenerator:
-    def read_file(self, fpath, ftype=None, sep=','):
+    def read_file(self, path, ftype=None, sep=','):
         if not ftype:
             try:
-                ftype = fpath.split('.')[-1]
+                ftype = path.split('/')[0].split('.')[-1]
             except IndexError:
                 raise Exception('Invalid file name.')
 
         if ftype == 'csv':
-            df = pd.read_csv(fpath, sep=sep)
+            df = pd.read_csv(path, sep=sep)
         elif ftype == 'xlsx':
-            df = pd.read_excel(fpath)
+            df = pd.read_excel(path)
         elif ftype == 'parquet':
             df = pd.read_parquet(fname)
         else:
@@ -22,23 +22,24 @@ class DataReportGenerator:
 
         return df
 
-    def generate(self, fpath, ftype=None, sep=',', output_path=None):
-        print(os.getcwd())
-        fdir, fname = '/'.join(fpath.split('/')[:-1]), fpath.split('/')[-1]
+    def generate(self, path, ftype=None, output=None, sep=','):
+        fdir, fname = '/'.join(path.split('/')[:-1]), path.split('/')[-1]
+        assert '.' in fname, f"Unrecognized file type '{fname}'."
 
-        df = self.read_file(fpath, ftype, sep)
-
-        if ftype and '.' not in fpath:
-            report_fname = f'report_{fname}.txt'
-        else:
-            report_fname = f"report_{fname.split('.')[0]}.txt"
+        df = self.read_file(path, ftype, sep)
         
-        if not output_path:
-            output_path = fdir
-        output_file = f'{output_path}/{report_fname}' if output_path else report_fname
-        file_ = open(output_file, 'w')
+        if not output:
+            if ftype and '.' not in path:
+                report_fname = f'report_{fname}.txt'
+            else:
+                report_fname = f"report_{fname.split('.')[0]}.txt"
+            output = f'{fdir}/{report_fname}' if fdir else report_fname
+        else:
+            assert output.split('/')[-1].split('.')[-1] == 'txt', "Output file type can only be 'txt'."
 
-        file_.write(f"\n___Report for {fpath}___\n{'*'*int(len(fpath)*2)}\n\n")
+        file_ = open(output, 'w')
+
+        file_.write(f"\n___Report for {path}___\n{'*'*int(len(path)*2)}\n\n")
 
         file_.write(f'Shape: {df.shape}\n')
         file_.write(f'Has duplicates: {df[df.duplicated()].shape[0] != 0}\n')
@@ -87,7 +88,7 @@ class DataReportGenerator:
                 file_.write('\n')
 
         file_.close()
-        print(f'Report path : {output_file}')
+        print(f'Report path : {output}')
 
 
 if __name__ == '__main__':
