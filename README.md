@@ -7,6 +7,8 @@
 
 #### Output file
 * *Shape*
+* *Has duplicates (based on all columns)*
+* *Has duplicates ignoring missing: (based on all columns)*
 * *Columns*
     * *description (requires manual input)*
     * *Column name -> Column type*
