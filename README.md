@@ -46,7 +46,7 @@ generate_report --path=path_to_file
 ### Reference
 
 | Argument       | Notes     | Optional     |
-| :------------- | :----------: | -----------: |
+| :------------------ | :----------: | -----------: |
 |  `--path` | Path to tabular file   | `False`    |
 | `--output`   | If not set, report is generated in dataset directory | `True` |
 | `--duplicate_check_cols` | `,` separated column names. \nChecks the number of duplicates based on defined columns | `True` |
