@@ -6,7 +6,7 @@ import pandas as pd
 class DataReportGenerator:
     def read_file(self, path, sep=','):
         try:
-            ftype = path.split('/')[0].split('.')[-1]
+            ftype = path.split('/')[-1].split('.')[-1]
         except IndexError:
             raise Exception('Invalid file name.')
 
@@ -21,7 +21,7 @@ class DataReportGenerator:
 
         return df
 
-    def generate(self, path, output=None, sep=','):
+    def generate(self, path, output=None, duplicate_check_cols=None, sep=','):
         fdir, fname = '/'.join(path.split('/')[:-1]), path.split('/')[-1]
         assert '.' in fname, f"Unrecognized file type '{fname}'."
 
@@ -38,9 +38,19 @@ class DataReportGenerator:
         file_.write(f"\n___Report for {path}___\n{'*'*int(len(path)*2)}\n\n")
 
         file_.write(f'Shape: {df.shape}\n')
-        file_.write(f'Has duplicates: {df[df.duplicated()].shape[0] != 0}\n')
-        file_.write(f'Has duplicates ignoring missing: {df.dropna()[df.dropna().duplicated()].shape[0] != 0}')
-        file_.write(f'\n\n{"-"*200}\n\n')
+        file_.write(f'Has duplicates based on all columns: {df[df.duplicated()].shape[0] != 0}\n')
+        if duplicate_check_cols:
+            if isinstance(duplicate_check_cols, str):
+                duplicate_check_cols = duplicate_check_cols.split(',')
+            bad_duplicate_cols = set(duplicate_check_cols).difference(list(df.columns))
+            if bad_duplicate_cols:
+                duplicate_check_cols = list(filter(lambda col: col not in bad_duplicate_cols, duplicate_check_cols))
+                print('Removed from duplicate check columns:')
+                for bad_col in bad_duplicate_cols:
+                    print(f'- {bad_col}')
+                print('\n')
+            file_.write(f'Duplicate count based on {duplicate_check_cols}: {df[df.duplicated(duplicate_check_cols, keep=False)].shape[0]}')
+            file_.write(f'\n\n{"-"*200}\n\n')
 
 
         # Columns

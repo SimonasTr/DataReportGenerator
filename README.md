@@ -49,4 +49,5 @@ generate_report --path=path_to_file
 | :------------- | :----------: | -----------: |
 |  `--path` | Path to tabular file   | `False`    |
 | `--output`   | If not set, report is generated in dataset directory | `True` |
+| `--duplicate_check_cols` | `,` separated column names. \nChecks the number of duplicates based on defined columns | `True` |
 | `--sep`   | Separator *(for `.csv` files)* | `True` |
