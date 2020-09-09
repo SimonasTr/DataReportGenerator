@@ -8,7 +8,7 @@
 #### Output file
 * *Shape*
 * *Has duplicates (based on all columns)*
-* *Has duplicates ignoring missing: (based on all columns)*
+* *Duplicate count based on [column_1, column_2, ...] (if `--duplicate_check_cols` is set)*
 * *Columns*
     * *description (requires manual input)*
     * *Column name -> Column type*
@@ -49,5 +49,5 @@ generate_report --path=path_to_file
 | :------------------ | :----------: | -----------: |
 |  `--path` | Path to tabular file   | `False`    |
 | `--output`   | If not set, report is generated in dataset directory | `True` |
-| `--duplicate_check_cols` | `,` separated column names. | `True` |
+| `--duplicate_check_cols` | `,` separated column names | `True` |
 | `--sep`   | Separator *(for `.csv` files)* | `True` |
