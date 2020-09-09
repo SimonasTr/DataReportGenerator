@@ -45,6 +45,6 @@ generate_report --path=path_to_file
 
 | Argument       | Notes     | Optional     |
 | :------------- | :----------: | -----------: |
-|  `--path` | Path to tabular the file   | `False`    |
+|  `--path` | Path to tabular file   | `False`    |
 | `--output`   | If not set, report is generated in dataset directory | `True` |
-| `--sep`   | Separator for `.csv` files | `True` |
+| `--sep`   | Separator *(for `.csv` files)* | `True` |
