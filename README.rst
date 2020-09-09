@@ -1,10 +1,11 @@
 Data Report Generator
 -----------------
-Data Report Generator is a script for generating data overview reports for tabular datasets.
+<h4>Data Report Generator is a script for generating data overview reports for tabular datasets.</h4>
 
-Currently supports .xlsx .csv .parquet files.
+<h4>Currently supports .xlsx .csv .parquet files.</h4>
 
-Output file
+
+<h5>Output file</h5>
 - Shape
 - Columns
     * __description__ requires manual input
