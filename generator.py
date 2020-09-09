@@ -4,12 +4,11 @@ import os
 import pandas as pd
 
 class DataReportGenerator:
-    def read_file(self, path, ftype=None, sep=','):
-        if not ftype:
-            try:
-                ftype = path.split('/')[0].split('.')[-1]
-            except IndexError:
-                raise Exception('Invalid file name.')
+    def read_file(self, path, sep=','):
+        try:
+            ftype = path.split('/')[0].split('.')[-1]
+        except IndexError:
+            raise Exception('Invalid file name.')
 
         if ftype == 'csv':
             df = pd.read_csv(path, sep=sep)
@@ -22,17 +21,14 @@ class DataReportGenerator:
 
         return df
 
-    def generate(self, path, ftype=None, output=None, sep=','):
+    def generate(self, path, output=None, sep=','):
         fdir, fname = '/'.join(path.split('/')[:-1]), path.split('/')[-1]
         assert '.' in fname, f"Unrecognized file type '{fname}'."
 
-        df = self.read_file(path, ftype, sep)
+        df = self.read_file(path, sep)
         
         if not output:
-            if ftype and '.' not in path:
-                report_fname = f'report_{fname}.txt'
-            else:
-                report_fname = f"report_{fname.split('.')[0]}.txt"
+            report_fname = f"report_{fname.split('.')[0]}.txt"
             output = f'{fdir}/{report_fname}' if fdir else report_fname
         else:
             assert output.split('/')[-1].split('.')[-1] == 'txt', "Output file type can only be 'txt'."

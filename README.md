@@ -29,14 +29,21 @@
 1. Add `alias generate_report="python3 path_to_generator.py generate"` to `.bashrc` and source it *(optional)*
 
 
-### Usage
-If alias is not set:
+### Basic Usage
+*If alias is not set:*
 
 ```bash
 python3 generator.py generate --path=path_to_file
 ```
 
-If alias is set:
+*If alias is set:*
 ```bash
 generate_report --path=path_to_file
 ```
+
+### Reference
+| Argument | Notes | Optional
+| :--------------| :---------------------
+| `--path`  | Path to tabular file | `False`
+| `--output` | If not set, report is generated in dataset directory | `True`
+| `--sep`   | Separator for `.csv` files | `True`
