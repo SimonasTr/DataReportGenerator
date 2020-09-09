@@ -28,11 +28,11 @@
 ### Usage
 If alias is not set:
 
-'''bash
+```bash
 python3 generator.py generate --path=path_to_file
-'''
+```
 
 If alias is set:
-'''bash
+```bash
 generate_report --path=path_to_file
-'''
+```
