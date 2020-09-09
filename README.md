@@ -18,18 +18,18 @@
 * *10 Random rows*
 * *10 Random rows for every column containing missing values in that column*
 
-### Requirements
+## Requirements
 ```bash
 >= python3.6
 ```
 
-### Installation
+## Installation
 1. Ensure `>= python3.6` is installed
 1. `pip install -r requirements.txt`
 1. Add `alias generate_report="python3 path_to_generator.py generate"` to `.bashrc` and source it *(optional)*
 
 
-### Basic Usage
+## Basic Usage
 *If alias is not set:*
 
 ```bash
@@ -45,6 +45,6 @@ generate_report --path=path_to_file
 
 | Argument       | Notes     | Optional     |
 | :------------- | :----------: | -----------: |
-|  `--path` | Path to tabular the file   | `True`    |
+|  `--path` | Path to tabular the file   | `False`    |
 | `--output`   | If not set, report is generated in dataset directory | `True` |
 | `--sep`   | Separator for `.csv` files | `True` |
